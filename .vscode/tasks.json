@@ -1,0 +1,19 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build Debug",
+            "command": "cd cmake-build-debug && cmake .. && make",
+            "args": [],
+            "options": {}
+        },
+        {
+            "type": "shell",
+            "label": "Build Release",
+            "command": "cd cmake-build-release && cmake .. && make",
+            "args": [],
+            "options": {}
+        }
+    ],
+    "version": "2.0.0"
+}

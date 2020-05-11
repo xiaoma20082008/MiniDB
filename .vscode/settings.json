@@ -1,0 +1,8 @@
+{
+    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+    "files.associations": {
+        "*.g4": "antlr",
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
+}
