@@ -34,7 +34,7 @@ SqlCall* SqlStmtParser::ParseCall() {
     } else {
       std::string error;
       error += std::string("unknown sql kind,");
-      error += std::string("actual: ") + lexer->stringValue() + " ";
+      error += std::string("actual: `") + lexer->stringValue() + "` ";
       error += std::string("expect: `database` or `table` or `index`");
       throw ParserException(error);
     }
@@ -54,15 +54,15 @@ SqlCall* SqlStmtParser::ParseCall() {
     } else {
       std::string error;
       error += std::string("unknown sql kind,");
-      error += std::string("actual: ") + lexer->stringValue() + " ";
+      error += std::string("actual: `") + lexer->stringValue() + "` ";
       error += std::string("expect: `database` or `table` or `index`");
       throw ParserException(error);
     }
   }
   default:
     std::string error;
-    error += std::string("unknown sql kind: ");
-    error += lexer->stringValue();
+    error += std::string("unknown sql kind: `");
+    error += lexer->stringValue() + "`";
     throw ParserException(error);
   }
 }

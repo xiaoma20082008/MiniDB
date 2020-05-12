@@ -1,6 +1,7 @@
 #include "Exception.h"
 #include "Interpreter.h"
 #include "StringUtils.h"
+#include <csignal>
 #include <iostream>
 
 using namespace std;
