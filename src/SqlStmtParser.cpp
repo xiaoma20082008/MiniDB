@@ -4,11 +4,9 @@
 #include "SqlStmtParser.h"
 
 SqlStmtParser::SqlStmtParser(const std::string& s)
-    : SqlStmtParser(new SqlExprParser(s)) {}
-
-SqlStmtParser::SqlStmtParser(SqlExprParser* parser_)
-    : SqlParser(parser_->GetLexer()) {
-  exprParser = parser_;
+    : SqlParser(std::make_shared<SqlLexer>(s)) {
+  exprParser = std::make_shared<SqlExprParser>(lexer);
+  lexer->nextToken();
 }
 
 SqlCall* SqlStmtParser::ParseCall() {
@@ -33,6 +31,12 @@ SqlCall* SqlStmtParser::ParseCall() {
     } else if (lexer->token().kind() == SqlToken::INDEX) {
       lexer->nextToken();
       return ParseCreateIndex();
+    } else {
+      std::string error;
+      error += std::string("unknown sql kind,");
+      error += std::string("actual: ") + lexer->stringValue() + " ";
+      error += std::string("expect: `database` or `table` or `index`");
+      throw ParserException(error);
     }
   }
   case SqlToken::DROP: {
@@ -47,6 +51,12 @@ SqlCall* SqlStmtParser::ParseCall() {
     } else if (lexer->token().kind() == SqlToken::INDEX) {
       lexer->nextToken();
       return ParseDropIndex();
+    } else {
+      std::string error;
+      error += std::string("unknown sql kind,");
+      error += std::string("actual: ") + lexer->stringValue() + " ";
+      error += std::string("expect: `database` or `table` or `index`");
+      throw ParserException(error);
     }
   }
   default:

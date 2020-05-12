@@ -11,8 +11,8 @@
 class SqlStmtParser : public SqlParser {
 public:
   explicit SqlStmtParser(const std::string& s);
-  explicit SqlStmtParser(SqlExprParser* parser_);
-  ~SqlStmtParser() override { delete exprParser; };
+
+public:
   SqlCall* ParseCall();
 
 protected:
@@ -36,7 +36,7 @@ protected:
 
   // endregion parse ddl
 protected:
-  SqlExprParser* exprParser;
+  std::shared_ptr<SqlExprParser> exprParser;
 };
 
 #endif // MINIDB_SQLSTMTPARSER_H

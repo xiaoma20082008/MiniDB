@@ -3,9 +3,12 @@
 //
 #include "SqlExprParser.h"
 
+#include <utility>
+
 SqlExprParser::SqlExprParser(const std::string& s) : SqlParser(s) {}
 SqlExprParser::SqlExprParser(std::shared_ptr<SqlLexer> lexer_)
-    : SqlParser(lexer_) {}
+    : SqlParser(std::move(lexer_)) {}
+
 /**
  * expr
  *  : literal                                               #LiteralExpr

@@ -1,11 +1,13 @@
 set(SOURCES
         AstOptimizer.h AstOptimizer.cpp
+        AstVisitor.h AstVisitor.cpp
         CatalogManager.h CatalogManager.cpp
         CommandManager.h CommandManager.cpp
         DBEngine.h DBEngine.cpp
         Exception.h
         Interpreter.h Interpreter.cpp
         RelNode.h RelNode.cpp
+        RelVisitor.h RelVisitor.cpp
         SqlCall.h SqlCall.cpp
         SqlStmtParser.h SqlStmtParser.cpp
         SqlExpr.h SqlExpr.cpp

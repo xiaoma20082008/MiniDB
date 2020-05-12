@@ -4,8 +4,8 @@
 
 #ifndef MINIDB_SQLPARSER_H
 #define MINIDB_SQLPARSER_H
-
 #include "SqlLexer.h"
+#include <memory>
 
 /**
  * <pre>

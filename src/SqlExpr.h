@@ -38,7 +38,7 @@ private:
   ValueType value;
 };
 
-class SqlValue : public SqlExpr {
+struct SqlValue : public SqlExpr {
 public:
   template <typename ValueType>
   explicit SqlValue(ValueType value)

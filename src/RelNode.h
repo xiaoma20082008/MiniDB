@@ -50,7 +50,7 @@ public:
     PHY_PROJECT = 1,
     PHY_LIMIT = 2,
     PHY_FILTER = 3,
-    PHY_TABLE_SCAN = 4,
+    PHY_SEQ_SCAN = 4,
     PHY_SORT = 5,
     PHY_INSERT,
     PHY_UPDATE,
@@ -81,7 +81,7 @@ class RelFilter : public RelNode {
 private:
   void* condition{};
 };
-class RelTableScan : public RelNode {
+class RelSeqScan : public RelNode {
 private:
   std::string table;
 };
@@ -89,7 +89,7 @@ class RelIndexScan : public RelNode {
 private:
   std::string index;
 };
-class RelClusterScan : public RelNode {
+class RelRowIdScan : public RelNode {
 private:
   std::string index;
 };
