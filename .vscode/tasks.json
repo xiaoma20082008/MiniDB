@@ -3,14 +3,14 @@
         {
             "type": "shell",
             "label": "Build Debug",
-            "command": "cd cmake-build-debug && cmake .. && make",
+            "command": "cd build && cmake .. && make",
             "args": [],
             "options": {}
         },
         {
             "type": "shell",
             "label": "Build Release",
-            "command": "cd cmake-build-release && cmake .. && make",
+            "command": "cd build && cmake .. && make",
             "args": [],
             "options": {}
         }
