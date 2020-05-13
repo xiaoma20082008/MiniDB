@@ -42,6 +42,15 @@ DEF_CALL(Select) {
   SqlExpr* where{};
 };
 
+
+/// region trx
+
+DEF_CALL(Begin){};
+DEF_CALL(Commit){};
+DEF_CALL(Rollback){};
+
+/// endregion trx
+
 /**
  * create database database_name;
  */

@@ -10,7 +10,7 @@
 /**
  * <pre>
  *  SqlExprParser : SqlParser
- *  SqlCallParser : SqlParser
+ *  SqlStmtParser : SqlParser
  * </pre>
  */
 

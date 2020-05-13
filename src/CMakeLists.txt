@@ -20,3 +20,5 @@ set(SOURCES
         )
 
 add_library(mini_db STATIC ${SOURCES})
+
+target_link_libraries(mini_db spdlog)

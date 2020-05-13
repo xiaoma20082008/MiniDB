@@ -16,4 +16,3 @@ include_directories(src)
 add_executable(${NAME} main.cpp)
 
 TARGET_LINK_LIBRARIES(${NAME} mini_db)
-target_link_libraries(${NAME} spdlog)

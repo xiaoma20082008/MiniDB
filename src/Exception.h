@@ -10,29 +10,34 @@
 
 class MiniDbException : public std::exception {
 public:
-  [[nodiscard]] const char* what() const noexcept override = 0;
+  explicit MiniDbException(std::string msg) : error(std::move(msg)) {}
+  explicit MiniDbException(const char* msg) : error(msg) {}
+
+public:
+  [[nodiscard]] const char* what() const noexcept override {
+    return error.c_str();
+  }
+
+private:
+  std::string error;
 };
 
 class ParserException : public MiniDbException {
 public:
-  explicit ParserException(std::string msg_) : msg(std::move(msg_)) {}
-  [[nodiscard]] const char* what() const noexcept override {
-    return msg.c_str();
-  }
-
-private:
-  const std::string msg;
+  explicit ParserException(std::string msg_)
+      : MiniDbException(std::move(msg_)) {}
 };
 
 class LexerException : public MiniDbException {
 public:
-  explicit LexerException(const std::string& msg_) : msg(msg_) {}
-  [[nodiscard]] const char* what() const noexcept override {
-    return msg.c_str();
-  }
+  explicit LexerException(std::string msg_)
+      : MiniDbException(std::move(msg_)) {}
+};
 
-private:
-  const std::string msg;
+class DbEngineException : public MiniDbException {
+public:
+  explicit DbEngineException(std::string msg_)
+      : MiniDbException(std::move(msg_)) {}
 };
 
 #endif // MINIDB_EXCEPTION_H
