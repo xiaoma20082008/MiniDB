@@ -5,16 +5,19 @@
 #ifndef MINIDB_INTERPRETER_H
 #define MINIDB_INTERPRETER_H
 #include "StringUtils.h"
-class DBEngine;
+#include <memory>
+
+class DbEngine;
+
 class Interpreter {
 public:
   Interpreter();
-  ~Interpreter();
+  ~Interpreter() = default;
 
 public:
   void Exec(const std::string& sql);
 
 private:
-  DBEngine* engine;
+  std::shared_ptr<DbEngine> engine;
 };
 #endif // MINIDB_INTERPRETER_H

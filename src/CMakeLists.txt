@@ -3,7 +3,7 @@ set(SOURCES
         AstVisitor.h AstVisitor.cpp
         CatalogManager.h CatalogManager.cpp
         CommandManager.h CommandManager.cpp
-        DBEngine.h DBEngine.cpp
+        DbEngine.h DbEngine.cpp
         Exception.h
         Interpreter.h Interpreter.cpp
         RelNode.h RelNode.cpp

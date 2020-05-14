@@ -13,22 +13,21 @@
 #include "RelNode.h"
 #include "StringUtils.h"
 
-class DBEngine {
+class DbEngine {
 public:
-  explicit DBEngine(std::string path_) {
-    cm = std::make_shared<CatalogManager>(path_);
-    bm = std::make_shared<BufferManager>();
-  }
-  explicit DBEngine(const char* path_) : DBEngine(std::string(path_)) {}
+  explicit DbEngine(std::string path_);
+  explicit DbEngine(const char* path_);
 
-  ~DBEngine() = default;
+  ~DbEngine() = default;
 
-  // region ddl
+  /// region ddl
+
   void CreateDatabase(const std::string& db);
   void DropDatabase(const std::string& db);
   void DropTable(const std::string& tb);
   void DropIndex(const std::string& index);
-  // endregion ddl
+
+  /// endregion ddl
 
   /// region dml
 

@@ -1,10 +1,17 @@
 //
 // Created by machunxiao on 2020/5/8.
 //
-#include "DBEngine.h"
+#include "DbEngine.h"
 #include "Exception.h"
 
-void DBEngine::CreateDatabase(const std::string& db) {
+DbEngine::DbEngine(const char* path_) : DbEngine(std::string(path_)) {}
+
+DbEngine::DbEngine(std::string path_) {
+  cm = std::make_shared<CatalogManager>(path_);
+  bm = std::make_shared<BufferManager>();
+}
+
+void DbEngine::CreateDatabase(const std::string& db) {
   auto database = cm->GetDb(db);
   if (database != nullptr) {
     std::string error;
@@ -14,7 +21,8 @@ void DBEngine::CreateDatabase(const std::string& db) {
   }
   cm->CreateDatabase(db);
 }
-void DBEngine::DropDatabase(const std::string& db) {
+
+void DbEngine::DropDatabase(const std::string& db) {
   auto database = cm->GetDb(db);
   if (database == nullptr) {
     std::string error;
@@ -24,9 +32,12 @@ void DBEngine::DropDatabase(const std::string& db) {
   }
   cm->DeleteDatabase(db);
 }
-void DBEngine::DropTable(const std::string& tb) {}
-void DBEngine::DropIndex(const std::string& index) {}
-void DBEngine::Execute(RelNode& node) {
+
+void DbEngine::DropTable(const std::string& tb) {}
+
+void DbEngine::DropIndex(const std::string& index) {}
+
+void DbEngine::Execute(RelNode& node) {
   if (!node.Open()) {
     return;
   }

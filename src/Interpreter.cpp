@@ -3,16 +3,14 @@
 //
 #include "Interpreter.h"
 #include "AstOptimizer.h"
-#include "DBEngine.h"
+#include "DbEngine.h"
 #include "SqlStmtParser.h"
 
 Interpreter::Interpreter() {
   char* home = getenv("HOME");
   std::string dbPath = std::string(home) + "/MiniDB";
-  engine = new DBEngine(dbPath);
+  engine = std::make_shared<DbEngine>(dbPath);
 }
-
-Interpreter::~Interpreter() { delete engine; }
 
 /**
  * 1. sql -> ast
