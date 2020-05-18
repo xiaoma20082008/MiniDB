@@ -1,24 +1,12 @@
-set(SOURCES
-        AstOptimizer.h AstOptimizer.cpp
-        AstVisitor.h AstVisitor.cpp
-        CatalogManager.h CatalogManager.cpp
-        CommandManager.h CommandManager.cpp
-        DbEngine.h DbEngine.cpp
-        Exception.h
-        Interpreter.h Interpreter.cpp
-        RelNode.h RelNode.cpp
-        RelVisitor.h RelVisitor.cpp
-        SqlCall.h SqlCall.cpp
-        SqlStmtParser.h SqlStmtParser.cpp
-        SqlExpr.h SqlExpr.cpp
-        SqlExprParser.h SqlExprParser.cpp
-        SqlLexer.h SqlLexer.cpp
-        SqlNode.h
-        SqlParser.h SqlParser.cpp
-        StringUtils.h StringUtils.cpp
-        Types.h
-        )
+file(GLOB_RECURSE MINI_DB_SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/inc/*.h)
 
-add_library(mini_db STATIC ${SOURCES})
+if (MINI_DB_BUILD_STATIC)
+    add_library(mini_db_static STATIC ${MINI_DB_SOURCES})
+endif ()
 
-target_link_libraries(mini_db spdlog)
+if (MINI_DB_BUILD_SHARED)
+    add_library(mini_db_shared SHARED ${MINI_DB_SOURCES})
+endif ()
+
+target_link_libraries(mini_db_static spdlog)
+target_link_libraries(mini_db_shared spdlog)

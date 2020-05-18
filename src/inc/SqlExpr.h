@@ -22,34 +22,46 @@ struct SqlIdent : public SqlExpr {
   std::string name;
 };
 
-class Holder {
-public:
-  virtual ~Holder() = default;
+enum class ValueType {
+  T_LONG,
+  T_DOUBLE,
+  T_STRING,
 };
 
-template <typename ValueType> class SqlValueObj : public Holder {
-public:
-  explicit SqlValueObj(ValueType v) : value(std::move(v)) {}
+struct SqlValueObj {
+  ValueType type_; /**< tag appropriately (eg. ) */
+  /**
+   * value, as specified value type
+   */
+  union ValueUnion {
+    int64_t l_val;     /**< A machine integer */
+    double d_val;      /**< double */
+    std::string s_val; /**< string */
+  } value_;            /**< value */
 
-public:
-  ValueType getValue() { return value; }
-
-private:
-  ValueType value;
 };
 
 struct SqlValue : public SqlExpr {
 public:
-  template <typename ValueType>
-  explicit SqlValue(ValueType value)
-      : data(new SqlValueObj<ValueType>(value)) {}
-  ~SqlValue() { delete data; };
-  template <typename ValueType> ValueType getData() {
-    return ((SqlValueObj<ValueType>)data).getValue();
+  SqlValue(int64_t s) {
+    data = {};
+    data->type_ = ValueType::T_LONG;
+    data->value_.l_val = s;
   }
+  SqlValue(double s) {
+    data = {};
+    data->type_ = ValueType::T_DOUBLE;
+    data->value_.d_val = s;
+  }
+  SqlValue(std::string s) {
+    data = {};
+    data->type_ = ValueType::T_STRING;
+    data->value_.s_val = s;
+  }
+  ~SqlValue(){};
 
 private:
-  Holder* data{};
+  SqlValueObj* data{};
 };
 
 DEF_EXPR(Binary) {

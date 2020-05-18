@@ -7,6 +7,8 @@
 
 #include "SqlCall.h"
 
+class RelNode;
+
 template <class R, class C> class AstVisitor {
 public:
   R Visit(const SqlNode& x, const C& ctx);
@@ -46,5 +48,8 @@ public:
   // endregion SqlCall
 };
 
-class StrVisitor : public AstVisitor<std::string, void*> {};
+class AstToStr : public AstVisitor<std::string, int> {};
+
+class AstToRel : public AstVisitor<RelNode, void*> {};
+
 #endif // MINIDB_ASTVISITOR_H

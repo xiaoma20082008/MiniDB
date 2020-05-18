@@ -38,7 +38,5 @@ void DbEngine::DropTable(const std::string& tb) {}
 void DbEngine::DropIndex(const std::string& index) {}
 
 void DbEngine::Execute(RelNode& node) {
-  if (!node.Open()) {
-    return;
-  }
+
 }

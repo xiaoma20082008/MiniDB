@@ -13,9 +13,10 @@ Interpreter::Interpreter() {
 }
 
 /**
- * 1. sql -> ast
- * 2. ast -> logical
- * 3. logical -> phy
+ * 1. sql -> ast(SqlNode)
+ * 2. ast -> logical(RelNode)
+ * 3. logical -> physical(PhyNode)
+ *
  * @param sql statement of user's input
  */
 void Interpreter::Exec(const std::string& sql) {
