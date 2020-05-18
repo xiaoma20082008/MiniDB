@@ -11,8 +11,8 @@
 
 class Compiler {
 public:
-  std::shared_ptr<Source> Source(RelNode* rel, int original = 0);
-  std::shared_ptr<Sinker> Sinker(RelNode* rel);
+  std::shared_ptr<Source> CreateSource(RelNode* rel, int original = 0);
+  std::shared_ptr<Sinker> CreateSinker(RelNode* rel);
 };
 
 #endif // MINIDB_COMPILER_H

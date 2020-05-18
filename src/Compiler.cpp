@@ -4,7 +4,7 @@
 
 #include "Compiler.h"
 
-std::shared_ptr<Source> Compiler::Source(RelNode* rel, int original) {
+std::shared_ptr<Source> Compiler::CreateSource(RelNode* rel, int original) {
   return nullptr;
 }
-std::shared_ptr<Sinker> Compiler::Sinker(RelNode* rel) { return nullptr; }
+std::shared_ptr<Sinker> Compiler::CreateSinker(RelNode* rel) { return nullptr; }
