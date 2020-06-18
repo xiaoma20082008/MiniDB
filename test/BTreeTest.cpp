@@ -1,7 +1,6 @@
 //
-// Created by machunxiao on 2020/4/30.
+// Created by machunxiao on 2020/6/4.
 //
-#include "sql/SqlLexer.h"
 #include <gtest/gtest.h>
 
 int main(int argc, char** argv) {

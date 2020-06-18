@@ -1,6 +1,6 @@
-#include "Exception.h"
-#include "Interpreter.h"
-#include "StringUtils.h"
+#include "api/Interpreter.h"
+#include "common/StringUtils.h"
+#include "exception/Exception.h"
 #include <csignal>
 #include <iostream>
 
@@ -12,8 +12,8 @@ void SignalHandler(int sig) {
   }
 }
 
-auto RegisterSignalHandler() {
-  struct sigaction sa;
+int RegisterSignalHandler() {
+  struct sigaction sa {};
   sa.sa_handler = &SignalHandler;
   sa.sa_flags = SA_RESTART;
 
