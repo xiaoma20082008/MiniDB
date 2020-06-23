@@ -10,7 +10,9 @@
 #include "sql/SqlStmtParser.h"
 
 struct Interpreter::Impl {
-  explicit Impl(std::string path) { engine = std::make_shared<DbEngine>(path); }
+  explicit Impl(const std::string& path) {
+    engine = std::make_shared<DbEngine>(path);
+  }
   std::shared_ptr<DbEngine> engine;
 };
 

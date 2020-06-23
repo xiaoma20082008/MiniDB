@@ -75,8 +75,7 @@ DEF_CALL(CreateTable) {
   SqlCreateTable() : SqlCall() { type = SqlKind::CREATE_TABLE; }
   ~SqlCreateTable() {
     delete table;
-    for (auto i = 0; i < columnDef.size(); ++i) {
-      auto def = columnDef.at(i);
+    for (auto def : columnDef) {
       delete def;
     }
     columnDef.clear();
@@ -97,8 +96,7 @@ DEF_CALL(CreateIndex) {
   ~SqlCreateIndex() {
     delete index;
     delete table;
-    for (auto i = 0; i < fields.size(); ++i) {
-      auto field = fields.at(i);
+    for (auto field : fields) {
       delete field;
     }
     fields.clear();
@@ -156,16 +154,16 @@ struct SqlSubQueryExpr : public SqlExpr {};
 
 /// a in (select xxx)
 struct SqlInSubQueryExpr : public SqlSubQueryExpr {
-  SqlIdent* name;
-  bool negated;
-  SqlSelect* subSelect;
+  SqlIdent* name{};
+  bool negated{false};
+  SqlSelect* subSelect{};
 };
 
 /// a exists (select xxx)
 struct SqlExistsSubQueryExpr : public SqlSubQueryExpr {
-  SqlIdent* name;
-  bool negated;
-  SqlSelect* subSelect;
+  SqlIdent* name{};
+  bool negated{false};
+  SqlSelect* subSelect{};
 };
 
 ///

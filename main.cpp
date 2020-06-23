@@ -1,10 +1,10 @@
 #include <csignal>
 #include <cstdlib>
 #include <iostream>
+#include <memory>
 
 #include "api/Interpreter.h"
 #include "common/StringUtils.h"
-#include "config/DbConfig.h"
 #include "exception/Exception.h"
 
 using namespace std;
