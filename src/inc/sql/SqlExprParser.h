@@ -5,12 +5,13 @@
 #ifndef MINIDB_SQLEXPRPARSER_H
 #define MINIDB_SQLEXPRPARSER_H
 
-#include "SqlExpr.h"
-#include "SqlParser.h"
 #include <vector>
 
+#include "SqlExpr.h"
+#include "SqlParser.h"
+
 class SqlExprParser : public SqlParser {
-public:
+ public:
   explicit SqlExprParser(const std::string& s);
   explicit SqlExprParser(std::shared_ptr<SqlLexer> lexer_);
 
@@ -26,4 +27,4 @@ public:
   void ParseValueList(std::vector<SqlValue*>& valueList);
 };
 
-#endif // MINIDB_SQLEXPRPARSER_H
+#endif  // MINIDB_SQLEXPRPARSER_H

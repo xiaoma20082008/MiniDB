@@ -9,13 +9,13 @@
 #include "SqlLexer.h"
 
 class SqlStmtParser : public SqlParser {
-public:
+ public:
   explicit SqlStmtParser(const std::string& s);
 
-public:
+ public:
   SqlCall* ParseCall();
 
-protected:
+ protected:
   // region parse dml
 
   SqlInsert* ParseInsert();
@@ -35,8 +35,8 @@ protected:
   SqlDropIndex* ParseDropIndex();
 
   // endregion parse ddl
-protected:
+ protected:
   std::shared_ptr<SqlExprParser> exprParser;
 };
 
-#endif // MINIDB_SQLSTMTPARSER_H
+#endif  // MINIDB_SQLSTMTPARSER_H

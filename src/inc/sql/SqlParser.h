@@ -4,8 +4,9 @@
 
 #ifndef MINIDB_SQLPARSER_H
 #define MINIDB_SQLPARSER_H
-#include "SqlLexer.h"
 #include <memory>
+
+#include "SqlLexer.h"
 
 /**
  * <pre>
@@ -15,7 +16,7 @@
  */
 
 class SqlParser {
-public:
+ public:
   explicit SqlParser(const std::string& s);
   explicit SqlParser(std::shared_ptr<SqlLexer> lexer_);
   SqlParser(const SqlParser& rhs) = delete;
@@ -27,8 +28,8 @@ public:
 
   std::shared_ptr<SqlLexer> GetLexer();
 
-protected:
+ protected:
   std::shared_ptr<SqlLexer> lexer;
 };
 
-#endif // MINIDB_SQLPARSER_H
+#endif  // MINIDB_SQLPARSER_H

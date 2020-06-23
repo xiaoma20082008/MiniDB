@@ -5,4 +5,4 @@
 #ifndef MINIDB_PAGEMANAGER_H
 #define MINIDB_PAGEMANAGER_H
 class PageManager {};
-#endif // MINIDB_PAGEMANAGER_H
+#endif  // MINIDB_PAGEMANAGER_H

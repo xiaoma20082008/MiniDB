@@ -7,7 +7,7 @@
 #include "RelNode.h"
 #include "sql/SqlCall.h"
 class Optimizer {
-public:
+ public:
   RelNode* Optimize(const SqlCall& call);
 };
-#endif // MINIDB_OPTIMIZER_H
+#endif  // MINIDB_OPTIMIZER_H

@@ -12,8 +12,9 @@ class ReadOptions {};
 class Transaction {};
 class TxnCtx {};
 
-template <typename K, typename V> class EntityIndex {
-public:
+template <typename K, typename V>
+class EntityIndex {
+ public:
   virtual uint64_t Count() = 0;
   virtual uint64_t Count(uint64_t mem_limit) = 0;
 
@@ -34,18 +35,19 @@ public:
   virtual void Keys(const Transaction& txn) = 0;
 };
 
-template <typename PK, typename E> class SubIndex : public EntityIndex<PK, E> {
-public:
+template <typename PK, typename E>
+class SubIndex : public EntityIndex<PK, E> {
+ public:
 };
 
 template <typename K, typename E>
 class BasicIndex : public EntityIndex<K, E> {};
 
 class StorageService {
-public:
+ public:
   virtual ~StorageService() = 0;
 
-public:
+ public:
   virtual void Start() = 0;
   virtual void Close() = 0;
 
@@ -66,4 +68,4 @@ public:
   // endregion trx
 };
 
-#endif // MINIDB_STORAGESERVICE_H
+#endif  // MINIDB_STORAGESERVICE_H

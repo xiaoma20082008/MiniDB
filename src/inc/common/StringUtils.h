@@ -7,13 +7,13 @@
 #include <string>
 
 class StringUtils {
-public:
+ public:
   StringUtils() = delete;
   StringUtils(const StringUtils& rhs) = delete;
   StringUtils& operator=(const StringUtils& rhs) = delete;
   ~StringUtils() = delete;
 
-public:
+ public:
   static std::string& ltrim(std::string& str,
                             const std::string& chars = "\t\n\v\f\r ");
 
@@ -24,4 +24,4 @@ public:
                            const std::string& chars = "\t\n\v\f\r ");
 };
 
-#endif // MINIDB_STRINGUTILS_H
+#endif  // MINIDB_STRINGUTILS_H

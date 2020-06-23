@@ -1,8 +1,11 @@
+#include <csignal>
+#include <cstdlib>
+#include <iostream>
+
 #include "api/Interpreter.h"
 #include "common/StringUtils.h"
+#include "config/DbConfig.h"
 #include "exception/Exception.h"
-#include <csignal>
-#include <iostream>
 
 using namespace std;
 
@@ -50,9 +53,11 @@ string ReadSQL() {
 }
 
 class MiniDb {
-public:
-  void Run() {
-    Interpreter interpreter;
+ public:
+  MiniDb() = default;
+  ~MiniDb() = default;
+
+  void Run() const {
     do {
       std::string sql = ReadSQL();
       if (sql == "exit") {
@@ -62,7 +67,7 @@ public:
         continue;
       }
       try {
-        interpreter.Exec(sql);
+        interpreter->Exec(sql);
       } catch (const MiniDbException& e) {
         std::cout << e.what() << std::endl;
         // break;
@@ -70,10 +75,7 @@ public:
     } while (true);
   }
 
-  class Builder {
-  public:
-    std::unique_ptr<MiniDb> Build() { return std::make_unique<MiniDb>(); }
-  };
+  std::shared_ptr<Interpreter> interpreter;
 };
 
 int main(int argc, char* argv[]) {
@@ -81,7 +83,18 @@ int main(int argc, char* argv[]) {
   if (r != 0) {
     return r;
   }
-  auto db = MiniDb::Builder().Build();
+  const char* basedir = "";
+  const char* datadir = std::getenv("HOME");
+  if (datadir == nullptr) {
+    cout << "got an error datadir" << endl;
+    exit(0);
+    return 0;
+  }
+  uint32_t server_id = 1;
+  DbConfig cfg{};
+  cfg.SetBasedir(basedir).SetDatadir(datadir).SetServerId(server_id);
+  auto db = std::make_unique<MiniDb>();
+  db->interpreter = std::make_shared<Interpreter>(cfg);
   db->Run();
   return 0;
 }

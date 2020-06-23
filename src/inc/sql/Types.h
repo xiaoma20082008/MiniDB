@@ -6,31 +6,32 @@
 #define MINIDB_TYPES_H
 
 class SqlKind {
-public:
+ public:
   enum SqlType {
-    // DML
+    // DML 1~20
     INSERT = 1,
     DELETE = 2,
     UPDATE = 3,
     SELECT = 4,
-    // DDL
-    CREATE_DATABASE = 5,
-    DROP_DATABASE = 6,
-    DROP_SCHEMA = 7, // eq: drop database
-    CREATE_TABLE = 8,
-    ALTER_TABLE = 9,
-    DROP_TABLE = 10,
-    DESC_TABLE = 11,
-    CREATE_INDEX = 12,
-    ALTER_INDEX = 13,
-    DROP_INDEX = 14,
-    // DCL
-    USE_DATABASE = 15,
+    REPLACE = 5,
+    // DDL 21~50
+    CREATE_DATABASE = 21,
+    DROP_DATABASE = 22,
+    DROP_SCHEMA = 23,  // eq: drop database
+    CREATE_TABLE = 24,
+    ALTER_TABLE = 25,
+    DROP_TABLE = 26,
+    DESC_TABLE = 27,
+    CREATE_INDEX = 28,
+    ALTER_INDEX = 29,
+    DROP_INDEX = 20,
+    // DCL 51 ~
+    USE_DATABASE = 51,
   };
-  inline static bool IsDML(SqlType t) { return t >= INSERT && t <= SELECT; }
+  inline static bool IsDML(SqlType t) { return t >= INSERT && t <= REPLACE; }
   inline static bool IsDDL(SqlType t) {
-    return t >= CREATE_DATABASE && t <= DROP_INDEX;
+    return CREATE_DATABASE <= t && t <= DROP_INDEX;
   }
 };
 
-#endif // MINIDB_TYPES_H
+#endif  // MINIDB_TYPES_H

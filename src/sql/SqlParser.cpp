@@ -3,8 +3,9 @@
 //
 #include "sql/SqlParser.h"
 
-#include "exception/Exception.h"
 #include <utility>
+
+#include "exception/Exception.h"
 
 // region SqlParser
 

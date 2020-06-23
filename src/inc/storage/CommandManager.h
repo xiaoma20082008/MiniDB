@@ -4,13 +4,14 @@
 
 #ifndef MINIDB_COMMANDMANAGER_H
 #define MINIDB_COMMANDMANAGER_H
-#include "optimizer/RelNode.h"
 #include <unordered_map>
 
+#include "optimizer/RelNode.h"
+
 class CommandManager {
-public:
+ public:
   bool Exec();
 
-private:
+ private:
 };
-#endif // MINIDB_COMMANDMANAGER_H
+#endif  // MINIDB_COMMANDMANAGER_H

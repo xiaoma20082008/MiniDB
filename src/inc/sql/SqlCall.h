@@ -11,7 +11,8 @@ struct SqlCall : public SqlNode {
   SqlKind::SqlType type;
 };
 
-#define DEF_CALL(name) struct Sql##name : public SqlCall
+#define DEF_CALL(name) \
+  struct Sql##name : public SqlCall, public Visitable<Sql##name>
 
 DEF_CALL(Insert) {
   SqlInsert() : SqlCall() { type = SqlKind::INSERT; }
@@ -41,7 +42,6 @@ DEF_CALL(Select) {
   SqlIdent* table{};
   SqlExpr* where{};
 };
-
 
 /// region trx
 
@@ -147,6 +147,7 @@ DEF_CALL(DropIndex) {
     index = index_;
     type = SqlKind::DROP_INDEX;
   }
+  std::string database;
   std::string index;
 };
 
@@ -172,4 +173,4 @@ struct SqlScalarSubQueryExpr : public SqlSubQueryExpr {};
 
 // endregion subQuery
 
-#endif // MINIDB_SQLCALL_H
+#endif  // MINIDB_SQLCALL_H

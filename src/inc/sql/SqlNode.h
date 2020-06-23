@@ -6,5 +6,10 @@
 #define MINIDB_SQLNODE_H
 
 struct SqlNode {};
-
-#endif // MINIDB_SQLNODE_H
+struct AstVisitor2;
+template <typename T>
+struct Visitable {
+  //  void Accept(AstVisitor2* visitor) { visitor->Visit(static_cast<T*>(this));
+  //  }
+};
+#endif  // MINIDB_SQLNODE_H

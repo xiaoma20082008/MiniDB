@@ -39,10 +39,10 @@ struct Page {
 };
 
 class BasePage {
-public:
+ public:
   explicit BasePage(Page* page_) : page(page_), slice(page_->slice) {}
 
-protected:
+ protected:
   Page* page;
   Slice* slice;
 };
@@ -65,18 +65,18 @@ struct IndexHeader {
 };
 
 class SystemPage : public BasePage {
-public:
+ public:
   explicit SystemPage(Page* page_) : BasePage(page_) {}
 };
 class IndexPage : public BasePage {
-public:
+ public:
   explicit IndexPage(Page* page_) : BasePage(page_) {}
 
-private:
+ private:
   IndexHeader* index_header{};
 };
 class AllocatedPage : public BasePage {
-public:
+ public:
   explicit AllocatedPage(Page* page_) : BasePage(page_) {}
 };
 

@@ -3,16 +3,26 @@
         {
             "type": "shell",
             "label": "Build Debug",
-            "command": "cd build && cmake .. && make",
+            "command": "cd build && cmake -DCMAKE_BUILD_TYPE=Debug .. && make",
             "args": [],
-            "options": {}
+            "options": {},
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "type": "shell",
             "label": "Build Release",
-            "command": "cd build && cmake .. && make",
+            "command": "cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make",
             "args": [],
-            "options": {}
+            "options": {},
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ],
     "version": "2.0.0"

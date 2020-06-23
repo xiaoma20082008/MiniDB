@@ -5,4 +5,4 @@
 #ifndef MINIDB_BUFFERMANAGER_H
 #define MINIDB_BUFFERMANAGER_H
 class BufferManager {};
-#endif // MINIDB_BUFFERMANAGER_H
+#endif  // MINIDB_BUFFERMANAGER_H

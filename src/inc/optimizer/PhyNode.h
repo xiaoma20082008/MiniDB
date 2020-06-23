@@ -15,7 +15,7 @@
 #include "storage/Tuple.h"
 
 class PhyNode {
-public:
+ public:
   enum PhyOpType {
     PHY_INVALID = 0,
     PHY_PROJECT = 1,
@@ -28,16 +28,16 @@ public:
     PHY_DELETE,
   };
   PhyNode(PhyOpType type = PHY_INVALID) : opType(type) {}
-  virtual ~PhyNode() = 0;
+  virtual ~PhyNode() = default;
 
   virtual bool Open() = 0;
   virtual bool Run() = 0;
   virtual bool Close() = 0;
 
-public:
+ public:
   std::shared_ptr<PhyNode> childOp{};
 
-private:
+ private:
   PhyOpType opType;
 };
 
@@ -46,20 +46,20 @@ private:
 /// region PhyNode
 
 DEF_PHY(Limit) {
-private:
+ private:
   int64_t offset = 0;
   int64_t limit = -1;
 };
 DEF_PHY(SeqScan) {
-private:
+ private:
   std::string table;
 };
 DEF_PHY(IndexScan) {
-private:
+ private:
   std::string index;
 };
 DEF_PHY(RowIdScan) {
-private:
+ private:
   std::string index;
 };
 DEF_PHY(Values){};
@@ -71,28 +71,38 @@ DEF_PHY(Union){};
 /// region SingleNode
 
 class SingleNode : public PhyNode {
-protected:
+ protected:
   std::shared_ptr<Source> source;
   std::shared_ptr<Sinker> sinker;
 };
 
 class RelProject : public SingleNode {
-private:
-  std::vector<std::string> columns{};
-};
-class RelSort : public SingleNode {
-private:
-};
-class RelFilter : public SingleNode {
-public:
+ public:
   bool Open() override;
   bool Run() override;
   bool Close() override;
 
-private:
+ private:
+  std::vector<std::string> columns{};
+};
+class RelSort : public SingleNode {
+ public:
+  bool Open() override;
+  bool Run() override;
+  bool Close() override;
+
+ private:
+};
+class RelFilter : public SingleNode {
+ public:
+  bool Open() override;
+  bool Run() override;
+  bool Close() override;
+
+ private:
   std::shared_ptr<Scalar> condition;
 };
 
 /// endregion SingleNode
 
-#endif // MINIDB_PHYNODE_H
+#endif  // MINIDB_PHYNODE_H

@@ -8,20 +8,23 @@
 class Tuple {};
 
 class Sinker {
-public:
+ public:
   void Begin(long size){};
   virtual void Accept(Tuple& tuple) = 0;
   void End(){};
 };
 
 class Source {
-public:
-  Tuple& Receive();
+ public:
+  Tuple* Receive();
 };
 
 class Scalar {
-public:
-  template <typename T, typename C> T Execute(C ctx);
+ public:
+  template <typename T, typename C>
+  T Execute(C ctx) {
+    return nullptr;
+  }
 };
 
-#endif // MINIDB_TUPLE_H
+#endif  // MINIDB_TUPLE_H

@@ -31,19 +31,19 @@ SqlExprParser::SqlExprParser(std::shared_ptr<SqlLexer> lexer_)
 SqlExpr* SqlExprParser::ParseExpr() {
   SqlExpr* mainExpr{};
   switch (lexer->token().kind()) {
-  case SqlToken::IDENTIFIER: {
-    mainExpr = ParseIdent();
-    break;
-  }
-  case SqlToken::LONG_V:
-  case SqlToken::FLOAT_V:
-  case SqlToken::STR_V: {
-    mainExpr = ParseValue();
-    break;
-  }
-  default: {
-    break;
-  }
+    case SqlToken::IDENTIFIER: {
+      mainExpr = ParseIdent();
+      break;
+    }
+    case SqlToken::LONG_V:
+    case SqlToken::FLOAT_V:
+    case SqlToken::STR_V: {
+      mainExpr = ParseValue();
+      break;
+    }
+    default: {
+      break;
+    }
   }
   return mainExpr;
 }

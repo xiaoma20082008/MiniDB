@@ -11,8 +11,8 @@
  * Sort, Join, Project, Filter, Scan, Sample.
  */
 class RelNode {
-public:
+ public:
   virtual int GetId() = 0;
 };
 
-#endif // MINIDB_RELNODE_H
+#endif  // MINIDB_RELNODE_H

@@ -4,13 +4,14 @@
 
 #ifndef MINIDB_SQLLEXER_H
 #define MINIDB_SQLLEXER_H
-#include "exception/Exception.h"
 #include <string>
 #include <unordered_map>
 #include <utility>
 
+#include "exception/Exception.h"
+
 class SqlToken {
-public:
+ public:
   enum Kind {
     INVALID = 0,
     INSERT = 1,
@@ -59,13 +60,13 @@ public:
     SUB,
     MUL,
     DIV,
-    MOD,     // 求模
-    POW,     // 乘方
-    EXC,     // 感叹号
-    AMP,     // &
-    AMP_AMP, // &&
-    BAR,     // |
-    BAR_BAR, // ||
+    MOD,      // 求模
+    POW,      // 乘方
+    EXC,      // 感叹号
+    AMP,      // &
+    AMP_AMP,  // &&
+    BAR,      // |
+    BAR_BAR,  // ||
     // (
     LP,
     // )
@@ -81,23 +82,23 @@ public:
   SqlToken() : kind_(INVALID) {}
   SqlToken(Kind k) : kind_(k) {}
 
-public:
+ public:
   std::string name();
   Kind kind() { return kind_; }
 
-private:
+ private:
   Kind kind_;
 };
 
 class SqlLexer {
-public:
+ public:
   explicit SqlLexer(std::string _sql);
   explicit SqlLexer(const char* _sql);
   SqlLexer(const SqlLexer& rhs) = delete;
   SqlLexer& operator=(const SqlLexer& rhs) = delete;
   ~SqlLexer() = default;
 
-public:
+ public:
   void nextToken();
 
   void scanNumber();
@@ -114,17 +115,17 @@ public:
   double doubleValue() { return double_value; }
   std::string stringValue() { return str_value; }
 
-private:
+ private:
   void scanChar();
   char charAt(int index);
   static bool isWhitespace(char c);
   static bool isIdentChar(char c);
   static bool isNumberChar(char c);
 
-private:
+ private:
   std::string sql;
 
-private:
+ private:
   int pos = 0;
   int mark = 0;
   char ch;
@@ -136,4 +137,4 @@ private:
   SqlToken token_;
 };
 
-#endif // MINIDB_SQLLEXER_H
+#endif  // MINIDB_SQLLEXER_H

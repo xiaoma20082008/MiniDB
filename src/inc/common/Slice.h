@@ -8,7 +8,7 @@
 #include <cstdint>
 
 class Slice {
-public:
+ public:
   Slice(char* data_, uint32_t offset_, uint32_t length_);
   uint8_t ReadByte();
   uint8_t ReadUnsignedByte();
@@ -21,10 +21,10 @@ public:
 
   void WriteByte(uint8_t val);
 
-private:
+ private:
   uint32_t offset = 0;
   uint32_t length = 0;
   char* data = nullptr;
 };
 
-#endif // MINIDB_SLICE_H
+#endif  // MINIDB_SLICE_H

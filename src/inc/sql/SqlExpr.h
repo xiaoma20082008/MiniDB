@@ -4,12 +4,13 @@
 
 #ifndef MINIDB_SQLEXPR_H
 #define MINIDB_SQLEXPR_H
-#include "SqlNode.h"
-#include "Types.h"
 #include <map>
 #include <string>
 #include <utility>
 #include <vector>
+
+#include "SqlNode.h"
+#include "Types.h"
 
 #define DEF_EXPR(name) struct Sql##name##Expr : public SqlExpr
 
@@ -38,11 +39,10 @@ struct SqlValueObj {
     double d_val;      /**< double */
     std::string s_val; /**< string */
   } value_;            /**< value */
-
 };
 
 struct SqlValue : public SqlExpr {
-public:
+ public:
   SqlValue(int64_t s) {
     data = {};
     data->type_ = ValueType::T_LONG;
@@ -60,7 +60,7 @@ public:
   }
   ~SqlValue(){};
 
-private:
+ private:
   SqlValueObj* data{};
 };
 
@@ -115,7 +115,6 @@ DEF_EXPR(Between) {
 DEF_EXPR(FuncCall){};
 
 DEF_EXPR(ColDef) {
-
   ~SqlColDefExpr() {
     delete colName;
     delete colType;
@@ -127,4 +126,4 @@ DEF_EXPR(ColDef) {
   SqlIdent* colDesc;
 };
 
-#endif // MINIDB_SQLEXPR_H
+#endif  // MINIDB_SQLEXPR_H

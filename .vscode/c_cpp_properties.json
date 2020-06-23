@@ -1,0 +1,48 @@
+{
+    "env": {
+        "defaultCompilerPath": "/usr/bin/clang++",
+        "defaultIncludePath": "${workspaceFolder}/src/inc",
+        "defaultSpdlogIncludePath": "${workspaceFolder}/third-party/spdlog/include",
+        "defaultGoogleMockIncludePath": "${workspaceFolder}/third-party/googletest/googlemock/include/gmock",
+        "defaultGoogleTestIncludePath": "${workspaceFolder}/third-party/googletest/googletest/include/gtest"
+    },
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${defaultIncludePath}",
+                "${defaultSpdlogIncludePath}",
+                "${defaultGoogleMockIncludePath}",
+                "${defaultGoogleTestIncludePath}",
+                "/usr/local/include",
+                "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include",
+                "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"
+            ],
+            "defines": [
+                "DEBUG"
+            ],
+            "macFrameworkPath": [],
+            "compilerPath": "${defaultCompilerPath}",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "vector-of-bool.cmake-tools",
+            "browse": {
+                "path": [
+                    "${defaultIncludePath}",
+                    "${defaultSpdlogIncludePath}",
+                    "${defaultGoogleMockIncludePath}",
+                    "${defaultGoogleTestIncludePath}",
+                    "/usr/local/include",
+                    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+                    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include",
+                    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"
+                ],
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}

@@ -5,11 +5,11 @@
 #ifndef MINIDB_CATALOGMANAGER_H
 #define MINIDB_CATALOGMANAGER_H
 
-#include "common/StringUtils.h"
-
 #include <memory>
 #include <unordered_map>
 #include <vector>
+
+#include "common/StringUtils.h"
 
 class Column;
 class Index;
@@ -17,7 +17,7 @@ class Table;
 class Database;
 
 class Column {
-private:
+ private:
   std::string name;
   int position;
   std::string fullType;
@@ -32,17 +32,17 @@ private:
   Table* table;
 };
 class Index {
-private:
+ private:
   std::string name;
 };
 class Table {
-private:
+ private:
   std::vector<Column*> columns;
 };
 class Database {};
 
 class CatalogManager {
-public:
+ public:
   explicit CatalogManager(std::string path_) : path(std::move(path_)) {}
   explicit CatalogManager(const char* path_) : path(path_) {}
 
@@ -59,9 +59,9 @@ public:
   void DropIndex(const std::string& name);
   void AlterIndex();
 
-private:
+ private:
   std::string path = "";
   std::unordered_map<std::string, std::shared_ptr<Database>> databases{};
 };
 
-#endif // MINIDB_CATALOGMANAGER_H
+#endif  // MINIDB_CATALOGMANAGER_H

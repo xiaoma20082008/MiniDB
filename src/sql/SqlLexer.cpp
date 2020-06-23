@@ -92,118 +92,118 @@ void SqlLexer::nextToken() {
       continue;
     }
     switch (ch) {
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case '4':
-    case '5':
-    case '6':
-    case '7':
-    case '8':
-    case '9': {
-      scanNumber();
-      return;
-    }
-    case '\'': {
-      scanString();
-      return;
-    }
-    case '(': {
-      token_ = SqlToken::LP;
-      scanChar();
-      return;
-    }
-    case ')': {
-      token_ = SqlToken::RP;
-      scanChar();
-      return;
-    }
-    case ',': {
-      token_ = SqlToken::COMMA;
-      scanChar();
-      return;
-    }
-    case '+': {
-      token_ = SqlToken::ADD;
-      scanChar();
-      return;
-    }
-    case '-': {
-      token_ = SqlToken::SUB;
-      scanChar();
-      return;
-    }
-    case '*': {
-      token_ = SqlToken::STAR;
-      scanChar();
-      return;
-    }
-    case '/': {
-      token_ = SqlToken::DIV;
-      scanChar();
-      return;
-    }
-    case '%': {
-      token_ = SqlToken::MOD;
-      scanChar();
-      return;
-    }
-    case '&': {
-      scanChar();
-      if (ch == '&') {
-        scanChar();
-        token_ = SqlToken::AMP_AMP;
-      } else {
-        token_ = SqlToken::AMP;
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9': {
+        scanNumber();
+        return;
       }
-      return;
-    }
-    case '|': {
-      scanChar();
-      if (ch == '|') {
-        scanChar();
-        token_ = SqlToken::BAR_BAR;
-      } else {
-        token_ = SqlToken::BAR;
+      case '\'': {
+        scanString();
+        return;
       }
-    }
-    case '!': {
-      scanChar();
-      if (ch == '=') {
+      case '(': {
+        token_ = SqlToken::LP;
         scanChar();
-        token_ = SqlToken::NEQ;
-      } else {
-        token_ = SqlToken::EXC;
+        return;
       }
-    }
-    case '>': {
-      scanChar();
-      if (ch == '=') {
+      case ')': {
+        token_ = SqlToken::RP;
         scanChar();
-        token_ = SqlToken::GE;
-      } else {
-        token_ = SqlToken::GT;
+        return;
       }
-      return;
-    }
-    case '<': {
-      scanChar();
-      if (ch == '=') {
+      case ',': {
+        token_ = SqlToken::COMMA;
         scanChar();
-        token_ = SqlToken::LE;
-      } else if (ch == '>') {
-        scanChar();
-        token_ = SqlToken::NEQ;
-      } else {
-        token_ = SqlToken::LT;
+        return;
       }
-      return;
-    }
-    default: {
-      scanIdentifier();
-      return;
-    }
+      case '+': {
+        token_ = SqlToken::ADD;
+        scanChar();
+        return;
+      }
+      case '-': {
+        token_ = SqlToken::SUB;
+        scanChar();
+        return;
+      }
+      case '*': {
+        token_ = SqlToken::STAR;
+        scanChar();
+        return;
+      }
+      case '/': {
+        token_ = SqlToken::DIV;
+        scanChar();
+        return;
+      }
+      case '%': {
+        token_ = SqlToken::MOD;
+        scanChar();
+        return;
+      }
+      case '&': {
+        scanChar();
+        if (ch == '&') {
+          scanChar();
+          token_ = SqlToken::AMP_AMP;
+        } else {
+          token_ = SqlToken::AMP;
+        }
+        return;
+      }
+      case '|': {
+        scanChar();
+        if (ch == '|') {
+          scanChar();
+          token_ = SqlToken::BAR_BAR;
+        } else {
+          token_ = SqlToken::BAR;
+        }
+      }
+      case '!': {
+        scanChar();
+        if (ch == '=') {
+          scanChar();
+          token_ = SqlToken::NEQ;
+        } else {
+          token_ = SqlToken::EXC;
+        }
+      }
+      case '>': {
+        scanChar();
+        if (ch == '=') {
+          scanChar();
+          token_ = SqlToken::GE;
+        } else {
+          token_ = SqlToken::GT;
+        }
+        return;
+      }
+      case '<': {
+        scanChar();
+        if (ch == '=') {
+          scanChar();
+          token_ = SqlToken::LE;
+        } else if (ch == '>') {
+          scanChar();
+          token_ = SqlToken::NEQ;
+        } else {
+          token_ = SqlToken::LT;
+        }
+        return;
+      }
+      default: {
+        scanIdentifier();
+        return;
+      }
     }
   }
 }

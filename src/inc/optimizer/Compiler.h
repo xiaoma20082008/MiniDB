@@ -5,14 +5,15 @@
 #ifndef MINIDB_COMPILER_H
 #define MINIDB_COMPILER_H
 
-#include "RelNode.h"
-#include "storage/Tuple.h"
 #include <memory>
 
+#include "RelNode.h"
+#include "storage/Tuple.h"
+
 class Compiler {
-public:
+ public:
   std::shared_ptr<Source> CreateSource(RelNode* rel, int original = 0);
   std::shared_ptr<Sinker> CreateSinker(RelNode* rel);
 };
 
-#endif // MINIDB_COMPILER_H
+#endif  // MINIDB_COMPILER_H

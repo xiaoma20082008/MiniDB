@@ -9,36 +9,36 @@
 #include <utility>
 
 class MiniDbException : public std::exception {
-public:
+ public:
   explicit MiniDbException(std::string msg);
   explicit MiniDbException(const char* msg);
   ~MiniDbException() override = default;
 
-public:
+ public:
   [[nodiscard]] const char* what() const noexcept override {
     return error.c_str();
   }
 
-private:
+ private:
   std::string error;
 };
 
 class ParserException : public MiniDbException {
-public:
+ public:
   explicit ParserException(std::string msg_)
       : MiniDbException(std::move(msg_)) {}
 };
 
 class LexerException : public MiniDbException {
-public:
+ public:
   explicit LexerException(std::string msg_)
       : MiniDbException(std::move(msg_)) {}
 };
 
 class DbEngineException : public MiniDbException {
-public:
+ public:
   explicit DbEngineException(std::string msg_)
       : MiniDbException(std::move(msg_)) {}
 };
 
-#endif // MINIDB_EXCEPTION_H
+#endif  // MINIDB_EXCEPTION_H

@@ -11,59 +11,59 @@ SqlStmtParser::SqlStmtParser(const std::string& s)
 
 SqlCall* SqlStmtParser::ParseCall() {
   switch (lexer->token().kind()) {
-  case SqlToken::INSERT:
-    return ParseInsert();
-  case SqlToken::DELETE:
-    return ParseDelete();
-  case SqlToken::UPDATE:
-    return ParseUpdate();
-  case SqlToken::SELECT:
-    return ParseSelect();
-  case SqlToken::CREATE: {
-    lexer->nextToken();
-    if (lexer->token().kind() == SqlToken::TABLE) {
+    case SqlToken::INSERT:
+      return ParseInsert();
+    case SqlToken::DELETE:
+      return ParseDelete();
+    case SqlToken::UPDATE:
+      return ParseUpdate();
+    case SqlToken::SELECT:
+      return ParseSelect();
+    case SqlToken::CREATE: {
       lexer->nextToken();
-      return ParseCreateTb();
-    } else if (lexer->token().kind() == SqlToken::DATABASE ||
-               lexer->token().kind() == SqlToken::SCHEMA) {
-      lexer->nextToken();
-      return ParseCreateDb();
-    } else if (lexer->token().kind() == SqlToken::INDEX) {
-      lexer->nextToken();
-      return ParseCreateIndex();
-    } else {
-      std::string error;
-      error += std::string("unknown sql kind,");
-      error += std::string("actual: `") + lexer->stringValue() + "` ";
-      error += std::string("expect: `database` or `table` or `index`");
-      throw ParserException(error);
+      if (lexer->token().kind() == SqlToken::TABLE) {
+        lexer->nextToken();
+        return ParseCreateTb();
+      } else if (lexer->token().kind() == SqlToken::DATABASE ||
+                 lexer->token().kind() == SqlToken::SCHEMA) {
+        lexer->nextToken();
+        return ParseCreateDb();
+      } else if (lexer->token().kind() == SqlToken::INDEX) {
+        lexer->nextToken();
+        return ParseCreateIndex();
+      } else {
+        std::string error;
+        error += std::string("unknown sql kind,");
+        error += std::string("actual: `") + lexer->stringValue() + "` ";
+        error += std::string("expect: `database` or `table` or `index`");
+        throw ParserException(error);
+      }
     }
-  }
-  case SqlToken::DROP: {
-    lexer->nextToken();
-    if (lexer->token().kind() == SqlToken::TABLE) {
+    case SqlToken::DROP: {
       lexer->nextToken();
-      return ParseDropTb();
-    } else if (lexer->token().kind() == SqlToken::DATABASE ||
-               lexer->token().kind() == SqlToken::SCHEMA) {
-      lexer->nextToken();
-      return ParseDropDb();
-    } else if (lexer->token().kind() == SqlToken::INDEX) {
-      lexer->nextToken();
-      return ParseDropIndex();
-    } else {
-      std::string error;
-      error += std::string("unknown sql kind,");
-      error += std::string("actual: `") + lexer->stringValue() + "` ";
-      error += std::string("expect: `database` or `table` or `index`");
-      throw ParserException(error);
+      if (lexer->token().kind() == SqlToken::TABLE) {
+        lexer->nextToken();
+        return ParseDropTb();
+      } else if (lexer->token().kind() == SqlToken::DATABASE ||
+                 lexer->token().kind() == SqlToken::SCHEMA) {
+        lexer->nextToken();
+        return ParseDropDb();
+      } else if (lexer->token().kind() == SqlToken::INDEX) {
+        lexer->nextToken();
+        return ParseDropIndex();
+      } else {
+        std::string error;
+        error += std::string("unknown sql kind,");
+        error += std::string("actual: `") + lexer->stringValue() + "` ";
+        error += std::string("expect: `database` or `table` or `index`");
+        throw ParserException(error);
+      }
     }
-  }
-  default:
-    std::string error;
-    error += std::string("unknown sql kind: `");
-    error += lexer->stringValue() + "`";
-    throw ParserException(error);
+    default:
+      std::string error;
+      error += std::string("unknown sql kind: `");
+      error += lexer->stringValue() + "`";
+      throw ParserException(error);
   }
 }
 

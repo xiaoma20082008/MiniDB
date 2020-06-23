@@ -8,11 +8,12 @@
 #include "PhyNode.h"
 #include "RelVisitor.h"
 
-template <class R, class C> class PhyVisitor {
-public:
+template <class R, class C>
+class PhyVisitor {
+ public:
   R Visit(const PhyNode& x, const C& ctx);
 };
 
 class RelToPhy : public RelVisitor<PhyNode, void*> {};
 
-#endif // MINIDB_PHYVISITOR_H
+#endif  // MINIDB_PHYVISITOR_H

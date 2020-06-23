@@ -9,8 +9,9 @@
 
 class RelNode;
 
-template <class R, class C> class AstVisitor {
-public:
+template <class R, class C>
+class AstVisitor {
+ public:
   R Visit(const SqlNode& x, const C& ctx);
 
   // region SqlExpr
@@ -52,4 +53,4 @@ class AstToStr : public AstVisitor<std::string, int> {};
 
 class AstToRel : public AstVisitor<RelNode, void*> {};
 
-#endif // MINIDB_ASTVISITOR_H
+#endif  // MINIDB_ASTVISITOR_H

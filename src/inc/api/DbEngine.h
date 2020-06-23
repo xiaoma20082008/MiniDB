@@ -5,39 +5,34 @@
 #ifndef MINIDB_DBENGINE_H
 #define MINIDB_DBENGINE_H
 
-#include <memory>
-#include <spdlog/spdlog.h>
-#include <utility>
-
-#include "common/StringUtils.h"
-#include "optimizer/RelNode.h"
-#include "storage/BufferManager.h"
-#include "storage/CatalogManager.h"
+#include <string>
+class RelNode;
 
 class DbEngine {
-public:
+ public:
   explicit DbEngine(std::string path_);
   explicit DbEngine(const char* path_);
 
-  ~DbEngine() = default;
+  ~DbEngine();
 
   /// region ddl
 
   void CreateDatabase(const std::string& db);
   void DropDatabase(const std::string& db);
-  void DropTable(const std::string& tb);
-  void DropIndex(const std::string& index);
+  void DropTable(const std::string& db, const std::string& tb);
+  void DropIndex(const std::string& db, const std::string& index);
 
   /// endregion ddl
 
   /// region dml
 
-  void Execute(RelNode& node);
+  void Execute(RelNode* node);
 
   /// endregion dml
 
-private:
-  std::shared_ptr<CatalogManager> cm;
-  std::shared_ptr<BufferManager> bm;
+ private:
+  // PImpl
+  struct Impl;
+  Impl* impl;
 };
-#endif // MINIDB_DBENGINE_H
+#endif  // MINIDB_DBENGINE_H

@@ -11,6 +11,6 @@ class KeyType;
 class ValType;
 class BTreeNode {};
 class BTree {
-public:
+ public:
 };
-#endif // MINIDB_BTREE_H
+#endif  // MINIDB_BTREE_H

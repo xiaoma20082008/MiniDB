@@ -3,8 +3,4 @@
 //
 #include "storage/CommandManager.h"
 
-
-bool CommandManager::Exec() {
-
-  return true;
-}
+bool CommandManager::Exec() { return true; }
