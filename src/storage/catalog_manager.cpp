@@ -1,7 +1,7 @@
 //
 // Created by machunxiao on 2020/5/9.
 //
-#include "storage/CatalogManager.h"
+#include "storage/catalog_manager.h"
 
 #include "exception/Exception.h"
 

@@ -2,8 +2,8 @@
 // Created by machunxiao on 2020/5/9.
 //
 
-#ifndef MINIDB_CATALOGMANAGER_H
-#define MINIDB_CATALOGMANAGER_H
+#ifndef MINIDB_CATALOG_MANAGER_H
+#define MINIDB_CATALOG_MANAGER_H
 
 #include <memory>
 #include <unordered_map>
@@ -64,4 +64,4 @@ class CatalogManager {
   std::unordered_map<std::string, std::shared_ptr<Database>> databases{};
 };
 
-#endif  // MINIDB_CATALOGMANAGER_H
+#endif  // MINIDB_CATALOG_MANAGER_H

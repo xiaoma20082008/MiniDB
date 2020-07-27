@@ -2,8 +2,8 @@
 // Created by machunxiao on 2020/5/8.
 //
 
-#ifndef MINIDB_DBENGINE_H
-#define MINIDB_DBENGINE_H
+#ifndef MINIDB_DB_ENGINE_H
+#define MINIDB_DB_ENGINE_H
 
 #include <string>
 class RelNode;
@@ -35,4 +35,4 @@ class DbEngine {
   struct Impl;
   Impl* impl;
 };
-#endif  // MINIDB_DBENGINE_H
+#endif  // MINIDB_DB_ENGINE_H

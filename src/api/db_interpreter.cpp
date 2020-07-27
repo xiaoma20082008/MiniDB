@@ -1,31 +1,30 @@
 //
 // Created by machunxiao on 2020/5/8.
 //
-#include "api/Interpreter.h"
+#include "api/db_interpreter.h"
 
 #include <memory>
 
-#include "api/DbEngine.h"
+#include "api/db_engine.h"
 #include "optimizer/Optimizer.h"
 #include "sql/SqlStmtParser.h"
 
 struct Interpreter::Impl {
+  explicit Impl(const char* path) { engine = std::make_unique<DbEngine>(path); }
   explicit Impl(const std::string& path) {
-    engine = std::make_shared<DbEngine>(path);
+    engine = std::make_unique<DbEngine>(path);
   }
-  std::shared_ptr<DbEngine> engine;
+  ~Impl() = default;
+  std::unique_ptr<DbEngine> engine;
 };
 
-Interpreter::Interpreter(const DbConfig& cfg) {
-  std::string dbPath = std::string(cfg.datadir) + "/MiniDB";
-  impl = new Impl(dbPath);
-}
+Interpreter::Interpreter(const DbConfig& cfg) { impl = new Impl(cfg.datadir); }
 Interpreter::~Interpreter() { delete impl; }
 
 /**
- * 1. sql -> ast(SqlNode:)
+ * 1. sql -> ast(SqlNode:nothing)
  * 2. ast -> logical(RelNode:with annotation and attribute)
- * 3. logical -> physical(PhyNode:)
+ * 3. logical -> physical(PhyNode:physical)
  *
  * @param sql statement of user's input
  */

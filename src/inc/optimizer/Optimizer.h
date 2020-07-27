@@ -4,7 +4,7 @@
 
 #ifndef MINIDB_OPTIMIZER_H
 #define MINIDB_OPTIMIZER_H
-#include "RelNode.h"
+#include "rel_node.h"
 #include "sql/SqlCall.h"
 class Optimizer {
  public:

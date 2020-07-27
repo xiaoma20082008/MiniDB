@@ -2,7 +2,7 @@
 // Created by machunxiao on 2020/6/4.
 //
 
-#include "storage/page/Page.h"
+#include "storage/page/page.h"
 
 FilHeader* FilHeader::FromSlice(Slice* slice) {
   //  auto fh = new FilHeader();

@@ -2,11 +2,11 @@
 // Created by machunxiao on 2020/5/12.
 //
 
-#ifndef MINIDB_RELVISITOR_H
-#define MINIDB_RELVISITOR_H
+#ifndef MINIDB_REL_VISITOR_H
+#define MINIDB_REL_VISITOR_H
 #include <string>
 
-#include "RelNode.h"
+#include "rel_node.h"
 
 template <class R, class C>
 class RelVisitor {
@@ -16,4 +16,4 @@ class RelVisitor {
 
 class RelToStr : public RelVisitor<std::string, int> {};
 
-#endif  // MINIDB_RELVISITOR_H
+#endif  // MINIDB_REL_VISITOR_H

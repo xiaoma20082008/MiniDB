@@ -2,8 +2,8 @@
 // Created by machunxiao on 2020/5/8.
 //
 
-#ifndef MINIDB_INTERPRETER_H
-#define MINIDB_INTERPRETER_H
+#ifndef MINIDB_DB_INTERPRETER_H
+#define MINIDB_DB_INTERPRETER_H
 
 #include <string>
 
@@ -21,4 +21,4 @@ class Interpreter {
   struct Impl;
   Impl* impl;
 };
-#endif  // MINIDB_INTERPRETER_H
+#endif  // MINIDB_DB_INTERPRETER_H

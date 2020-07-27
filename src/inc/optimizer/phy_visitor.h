@@ -2,11 +2,11 @@
 // Created by machunxiao on 2020/5/18.
 //
 
-#ifndef MINIDB_PHYVISITOR_H
-#define MINIDB_PHYVISITOR_H
+#ifndef MINIDB_PHY_VISITOR_H
+#define MINIDB_PHY_VISITOR_H
 
-#include "PhyNode.h"
-#include "RelVisitor.h"
+#include "phy_node.h"
+#include "rel_visitor.h"
 
 template <class R, class C>
 class PhyVisitor {
@@ -16,4 +16,4 @@ class PhyVisitor {
 
 class RelToPhy : public RelVisitor<PhyNode, void*> {};
 
-#endif  // MINIDB_PHYVISITOR_H
+#endif  // MINIDB_PHY_VISITOR_H

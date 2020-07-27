@@ -3,7 +3,7 @@
 #include <iostream>
 #include <memory>
 
-#include "api/Interpreter.h"
+#include "api/db_interpreter.h"
 #include "common/StringUtils.h"
 #include "exception/Exception.h"
 

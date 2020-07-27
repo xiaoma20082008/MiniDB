@@ -1,6 +1,10 @@
-#pragma once
-#ifndef MINIDB_PAGE_H
-#define MINIDB_PAGE_H
+//
+// Created by machunxiao on 2020/7/27.
+//
+
+#ifndef MINIDB_PAGE_HPP
+#define MINIDB_PAGE_HPP
+
 #include "common/Slice.h"
 
 enum class PageType {
@@ -80,4 +84,4 @@ class AllocatedPage : public BasePage {
   explicit AllocatedPage(Page* page_) : BasePage(page_) {}
 };
 
-#endif
+#endif  // MINIDB_PAGE_HPP

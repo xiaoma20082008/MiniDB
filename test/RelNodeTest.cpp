@@ -1,8 +1,9 @@
 //
 // Created by machunxiao on 2020/5/18.
 //
-#include "optimizer/RelNode.h"
 #include <gtest/gtest.h>
+
+#include "optimizer/rel_node.h"
 
 TEST(Operator, Init) {}
 TEST(Operator, Execution) {}

@@ -10,7 +10,7 @@
 class Slice {
  public:
   Slice(char* data_, uint32_t offset_, uint32_t length_);
-  uint8_t ReadByte();
+  int8_t ReadByte();
   uint8_t ReadUnsignedByte();
   int16_t ReadShort();
   uint16_t ReadUnsignedShort();
@@ -19,12 +19,13 @@ class Slice {
   int64_t ReadLong();
   uint64_t ReadUnsignedLong();
 
-  void WriteByte(uint8_t val);
+  void WriteByte(int8_t val);
+  void WriteUnsignedByte(uint8_t val);
 
  private:
-  uint32_t offset = 0;
-  uint32_t length = 0;
-  char* data = nullptr;
+  uint32_t offset{0};
+  uint32_t length{0};
+  char* data{nullptr};
 };
 
 #endif  // MINIDB_SLICE_H

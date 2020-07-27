@@ -2,8 +2,8 @@
 // Created by machunxiao on 2020/5/18.
 //
 
-#ifndef MINIDB_PHYNODE_H
-#define MINIDB_PHYNODE_H
+#ifndef MINIDB_PHY_NODE_H
+#define MINIDB_PHY_NODE_H
 
 #include <cstdint>
 #include <memory>
@@ -105,4 +105,4 @@ class RelFilter : public SingleNode {
 
 /// endregion SingleNode
 
-#endif  // MINIDB_PHYNODE_H
+#endif  // MINIDB_PHY_NODE_H

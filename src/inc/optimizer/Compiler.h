@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include "RelNode.h"
+#include "rel_node.h"
 #include "storage/Tuple.h"
 
 class Compiler {
