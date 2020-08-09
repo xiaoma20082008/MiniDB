@@ -27,7 +27,7 @@ class PhyNode {
     PHY_UPDATE,
     PHY_DELETE,
   };
-  PhyNode(PhyOpType type = PHY_INVALID) : opType(type) {}
+  explicit PhyNode(PhyOpType type = PHY_INVALID) : opType(type) {}
   virtual ~PhyNode() = default;
 
   virtual bool Open() = 0;
